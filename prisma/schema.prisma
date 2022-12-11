@@ -1,0 +1,17 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement()) // idを設定して、自動で生成する
+  name String @unique // nameが他のnameと一致している場合はnull
+  description String? //後ろに?をつけることで、nullableを示す。(要はなくてもいい)
+}
